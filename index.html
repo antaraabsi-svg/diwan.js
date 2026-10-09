@@ -190,9 +190,21 @@ header,#hm,.bk,.skip,#more{display:none!important}
 .tb th{position:static}
 .lay{display:block!important}
 }
+#hlp{font-weight:700}#hlp.pulse{animation:hpp 1.4s ease-in-out 6}@keyframes hpp{50%{box-shadow:0 0 0 6px #c9a22766}}
+#hp{max-width:720px;width:94%;max-height:88vh;padding:0;background:var(--cd);color:var(--ink);border:2px solid var(--au);border-radius:14px;overflow:hidden}#hp[open]{display:flex;flex-direction:column}#hp::backdrop{background:#0008}
+.hph{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--g);color:#fff}.hph h3{margin:0;font-size:1.05rem}.hx{background:none;border:0;color:#fff;font-size:1.2rem;cursor:pointer}
+.hpt{display:flex;gap:4px;padding:8px 12px 0;border-bottom:1px solid var(--bd);overflow-x:auto}.hpt button{border:0;background:none;padding:8px 12px;cursor:pointer;font:inherit;color:var(--ink);border-bottom:3px solid transparent;white-space:nowrap}.hpt button.on{border-color:var(--au);font-weight:700;color:var(--g)}
+.hpb{padding:14px 16px 18px;overflow-y:auto;line-height:1.8}.hpb h4{margin:14px 0 6px;color:var(--g)}.hpo{padding-inline-start:20px}
+.hpc{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.hpc button,.hpr button,.hpe button{font:inherit;border:1px solid var(--bd);background:var(--g2);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}.hpb button.on{background:var(--g);color:#fff;border-color:var(--g)}
+.hpm{font-size:.85rem;opacity:.8;margin:2px 0}.hpe{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid var(--bd);border-radius:10px;padding:8px 12px;margin:8px 0}.hpe p{margin:2px 0}.hpe code{background:var(--g2);padding:1px 6px;border-radius:6px}
+.hps{border:1px solid var(--bd);border-radius:10px;padding:6px 12px;margin:8px 0}.hps summary{cursor:pointer}.hps summary span{opacity:.7;font-size:.85rem}
+.hpq{display:flex;gap:8px}.hpq input{flex:1;padding:8px 12px;border:1px solid var(--bd);border-radius:10px;font:inherit;background:var(--cd);color:var(--ink)}.hpq button{border:0;border-radius:10px;padding:8px 16px;cursor:pointer;font:inherit}
+.hpu{background:var(--g2);border-radius:10px 10px 10px 2px;padding:6px 12px;margin:12px 0 6px;font-weight:700}.hpr{border:1px solid var(--bd);border-radius:10px;padding:8px 12px;margin:6px 0}.hpr p{margin:4px 0}.hpl{margin:2px 0}.hpl .lk{border:0;background:none;color:var(--g);text-align:start;cursor:pointer;padding:2px 0;text-decoration:underline;font:inherit;border-radius:0}
+@media print{#hp,#hlp,#hlp2{display:none!important}}
 </style><script id="enh-js">(function(){
-var VERSION='1.2.0',VDATE='2026-10-09',PAGE=60,BASE_TITLE=document.title;
+var VERSION='1.3.0',VDATE='2026-10-09',PAGE=60,BASE_TITLE=document.title;
 var CHANGES=[
+['1.3.0','2026-10-09',['مساعد وشرح داخلي: زر «🤖 المساعد» (أو مفتاح ؟) فيه تعريف بالبرنامج وأقسامه وأمثلة تطبيقية بزر «جرّبه» وأسئلة وأجوبة']],
 ['1.2.0','2026-10-09',['تحديث شامل من فهرس الجريدة الرسمية: أُضيف 500 نص ليصبح المجموع 739 نصًّا','تعليم النصوص الملغاة حسب الفهرس وملء أرقام الجريدة الرسمية الناقصة','استُثنيت نصوص تفويض الإمضاء والتعيينات وإنهاء المهام والنصوص المؤقتة','النصوص المضافة آليا مصنّفة تلقائيا على الأقسام وعليها ملاحظة «تحتاج مراجعة»']],
 ['1.1.0','2026-10-08',['نسخ الإحالة القانونية (زر على كل نص، ونسخ إحالات كل النتائج من قائمة «المزيد»)','روابط مباشرة: حالة البحث والمرشحات في عنوان الصفحة، وزر «رابط النص»','بحث أذكى: تجاهل «ال» وحروف العطف، عبارة بين علامتي تنصيص، استثناء كلمة بعلامة «-»، واقتراحات أثناء الكتابة','تقرير طباعة رسمي بترويسة الشعار وتاريخ الإصدار ومعايير البحث','عرض جدول قابل للفرز','حقل «حالة النص» (ساري / معدَّل / ملغى) مع مرشّح','تكبير الخط A+ وA−، وتحسينات الوصول (تنقل بلوحة المفاتيح، رابط تخطٍّ، وسوم قراءة للشاشة)','تأخير قصير بعد الكتابة وتحميل البطاقات على دفعات','تنبيه عند إضافة نص مكرر، وتذكير بالنسخة الاحتياطية بعد 5 تعديلات','دعم العمل دون إنترنت (PWA)','سجل التحديثات هذا']],
 ['1.0','',['النسخة الأولى: 239 نصًا مفهرسًا']]];
@@ -335,5 +347,109 @@ var f=document.querySelector('footer .w');if(f&&!document.getElementById('ver'))
 }
 if(document.readyState=='loading')document.addEventListener('DOMContentLoaded',init);else init();
 if(window.__ENH_TEST)window.__ENH_TEST={parseQ:parseQ,cite:cite,dateOf:dateOf,strip:strip};
+})();
+</script><script id="help-js">(function(){
+function $(s){return document.querySelector(s)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function nz(s){return String(s||'').replace(/[ً-ْـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').toLowerCase()}
+function data(){try{return D}catch(e){return[]}}
+function go(h){var cur=location.hash;try{location.hash=h}catch(e){}if(cur==='#'+h||(!h&&!cur))dispatchEvent(new HashChangeEvent('hashchange'))}
+function findNum(n){return data().find(function(x){return x.num==n})}
+/* ---------- المحتوى ---------- */
+function examples(){
+var f=findNum('14-330'),fam=f?'fam='+f.id:'';
+var ex=[
+['البحث بالرقم','اكتب رقم النص كما يُكتب في الجريدة: السنة ثم الرقم.','13-05','q=13-05','قانون 13-05 المتعلق بتنظيم الأنشطة البدنية والرياضية'],
+['البحث بالموضوع','اكتب كلمة أو كلمتين من موضوع النص؛ تظهر النصوص التي تحتوي كل الكلمات.','الاتحاديات الرياضية','q='+encodeURIComponent('الاتحاديات الرياضية'),'كل النصوص التي تتناول الاتحاديات'],
+['عبارة بالضبط','ضع العبارة بين علامتي «» لتبحث عنها كما هي.','«المنشآت الرياضية»','q='+encodeURIComponent('«المنشآت الرياضية»'),'النصوص التي فيها العبارة نفسها متتابعة'],
+['استبعاد كلمة','ضع (-) قبل الكلمة التي لا تريدها في النتائج.','الإدارة -المركزية','q='+encodeURIComponent('الإدارة -المركزية'),'نصوص الإدارة باستثناء ما يخص الإدارة المركزية'],
+['حسب القسم','اختر القسم من القائمة أو من الأبواب على اليمين.','قسم التمويل','sec='+encodeURIComponent('التمويل'),'كل نصوص قسم التمويل'],
+['النصوص الملغاة','اختر «ملغى» من قائمة الحالات لتعرف ما لم يعد ساريًا.','حالة: ملغى','st='+encodeURIComponent('ملغى'),'النصوص التي ألغاها نص لاحق'],
+['النصوص المعدَّلة','«معدَّل» تعني أن نصًا لاحقًا عدّله؛ ارجع إلى التعديل قبل الاستشهاد.','حالة: معدَّل','st='+encodeURIComponent('معدَّل'),'نصوص عُدّلت وما زالت سارية'],
+['مدة زمنية','حدّد «من سنة» و«إلى سنة» لتضيّق النتائج.','2020 → 2025','y1=2020&y2=2025&all=1','النصوص الصادرة بين 2020 و2025'],
+['النص وتعديلاته','من بطاقة أي نص اضغط «النص وما يتصل به» لترى أصله وتعديلاته وتطبيقاته معًا.','المرسوم التنفيذي 14-330',fam||'all=1','الاتحاديات الرياضية الوطنية مع تعديلاتها'],
+['عرض جدول','زر «▦ جدول» يعرض النتائج في جدول تُرتَّب أعمدته بالضغط على رأس العمود.','جدول النتائج','v=t&all=1','كل النصوص في جدول قابل للترتيب']
+];return ex}
+function sections(){var m={},o=[];data().forEach(function(x){if(!m[x.sec]){m[x.sec]={};o.push(x.sec)}m[x.sec][x.ch]=(m[x.sec][x.ch]||0)+1});return{m:m,o:o}}
+var DESC={'الرياضة':'القانون العام للرياضة، الاتحاديات والأندية، التظاهرات، رياضيو النخبة، المؤسسات الرياضية، الطب الرياضي والمنشطات.','الشباب':'الجمعيات الشبانية، تظاهرات الشباب (المهرجانات...)، التنشيط والترفيه ومراكز الشباب.','الإدارة':'تنظيم الإدارة المركزية للوزارة وصلاحيات الوزير.','الهياكل':'المؤسسات والمعاهد والمديريات تحت الوصاية وتصنيف مناصبها العليا.','المنشآت':'إنشاء المنشآت الرياضية والشبانية واستغلالها ودفاتر الشروط.','التمويل':'حسابات التخصيص الخاص والصناديق والإعانات والإشهار الرياضي.','الموارد البشرية':'القوانين الأساسية للأسلاك، التوظيف والمسابقات، التعويضات، الخدمات الاجتماعية.'};
+var KB=[
+{k:['ما هو','عن البرنامج','تعريف','حول','من اين','المصدر','ماذا يفعل','فائده'],t:'ما هو المرجع؟',a:'فهرس منظَّم للقوانين والمراسيم والقرارات الخاصة بقطاع الشباب والرياضة في الجزائر، مأخوذ من فهرس الجريدة الرسمية، يُرتَّب حسب القسم والباب والسنة، ويربط كل نص بتعديلاته والنصوص التطبيقية له.'},
+{k:['قسم','اقسام','باب','ابواب','تصنيف','فرع'],t:'الأقسام والأبواب',a:'سبعة أقسام: الرياضة، الشباب، الإدارة، الهياكل، المنشآت، التمويل، الموارد البشرية. وتحت كل قسم أبواب فرعية. استعمل «الأبواب» على اليمين أو قائمة «كل الأقسام». ملاحظة: قد يظهر النص في أكثر من قسم عندما يهم أكثر من موضوع.',tab:'sections'},
+{k:['بحث','ابحث','اجد','كيف اجد','ابحث عن','دور','طريقه البحث'],t:'كيف أبحث؟',a:'اكتب في خانة البحث أعلى الصفحة: رقم النص (13-05)، أو كلمات من الموضوع، أو السنة، أو رقم الجريدة. تظهر الاقتراحات أثناء الكتابة. للعبارة بالضبط ضعها بين «»، ولاستبعاد كلمة اكتب (-) قبلها. اضغط Esc لمسح البحث.',go:['q=13-05','جرّب: 13-05']},
+{k:['رقم','ترقيم','سنه ثم رقم','13-05','صيغه الرقم','اكتب الرقم'],t:'كيف أكتب رقم النص؟',a:'الرقم في الجزائر يُكتب السنة ثم الرقم: «المرسوم التنفيذي رقم 14-330» أي رقم 330 لسنة 2014. اكتبه هكذا في البحث. إن لم تجده جرّب العكس (330-14) أو ابحث بالموضوع.',go:['q=14-330','جرّب: 14-330']},
+{k:['عبارة','بالضبط','اقتباس','نص حرفي'],t:'البحث بعبارة محددة',a:'ضع العبارة بين علامتي «» أو “” فتُطلب كما هي: «القانون الأساسي النموذجي».',go:['q='+encodeURIComponent('«الاتحاديات الرياضية»'),'جرّب مثالًا']},
+{k:['استبعد','استثني','بدون كلمه','ناقص','-','لا اريد'],t:'استبعاد كلمة',a:'اكتب علامة (-) قبل الكلمة: «رياضة -تفويض» يعرض نصوص الرياضة دون التي فيها «تفويض».'},
+{k:['حاله','ساري','ملغى','ملغي','معدل','الغاء','الغي','لا يزال ساري','هل النص ساري'],t:'حالة النص: ساري / معدَّل / ملغى',a:'على كل بطاقة شارة الحالة. «ملغى»: ألغاه نص لاحق (مأخوذ من الفهرس). «معدَّل»: عدّله نص لاحق ويجب مراجعة التعديل. «ساري»: لا يوجد إلغاء أو تعديل مسجَّل في المرجع. تحقق دائمًا من الجريدة الرسمية قبل الاحتجاج بالنص.',go:['st='+encodeURIComponent('ملغى'),'اعرض الملغى']},
+{k:['تعديل','تعديلات','اصل','اسره','يتصل','مرتبط','نص وما يتصل','يعدل'],t:'النص وتعديلاته',a:'من بطاقة النص اضغط «النص وما يتصل به» فتظهر عائلته: الأصل، ما عدّله أو تممه، والنصوص التطبيقية. هذا أسرع طريق للقانون كما هو مطبَّق اليوم.'},
+{k:['سنه','تاريخ','فتره','عام','من سنه'],t:'التصفية بالسنة',a:'اكتب «من سنة» و«إلى سنة» في خانتي التصفية، أو غيّر طريقة التجميع إلى «حسب السنة».',go:['y1=2020&y2=2025&all=1','نصوص 2020-2025']},
+{k:['نوع','مرسوم','قرار','قانون','امر','وزاري','تنفيذي'],t:'التصفية بنوع النص والدور',a:'قائمة «كل أنواع النصوص» تفرز بين قانون ومرسوم تنفيذي ومرسوم رئاسي وقرار... وقائمة «الدور» تفرز بين الأصلي والتعديل والتطبيقي.'},
+{k:['نسخ','احاله','استشهاد','اقتباس قانوني','مرجع'],t:'نسخ الإحالة القانونية',a:'زر «📋 نسخ الإحالة» على كل بطاقة ينسخ الإحالة جاهزة (النوع والرقم والتاريخ والجريدة الرسمية). ولنسخ إحالات كل النتائج: «⋯ المزيد» ثم «نسخ إحالات النتائج».'},
+{k:['رابط','شارك','مشاركه','ارسل','واتساب','بريد'],t:'مشاركة نتيجة أو نص',a:'زر «🔗 رابط النص» ينسخ رابطًا مباشرًا يفتح النص نفسه. وعنوان الصفحة يحفظ بحثك وتصفيتك، فانسخه وأرسله فيفتح عند زميلك على النتيجة نفسها.'},
+{k:['طباعه','طباعة','تقرير','pdf','ورق'],t:'طباعة تقرير رسمي',a:'«⋯ المزيد» ثم «🖨 طباعة تقرير رسمي»: يُنتج تقريرًا بعنوان وتاريخ وشروط البحث وعدد النتائج. اختر «حفظ بصيغة PDF» من نافذة الطباعة إن أردت ملفًا.'},
+{k:['اضافه','ضيف','نص جديد','ادخل','اضف'],t:'إضافة نص جديد',a:'اضغط «➕ إضافة نص» وأدخل النوع والرقم والتاريخ والموضوع والقسم. يحذّرك البرنامج إذا وُجد نص بالرقم نفسه. النصوص التي تضيفها محفوظة في متصفحك فقط (انظر النسخة الاحتياطية).',click:['#ad1','افتح نموذج الإضافة']},
+{k:['تعديل نص','عدل نص','صحح','خطا','غلط','حذف','احذف','استعاده'],t:'تعديل نص أو حذفه',a:'على كل بطاقة زرّا «✎ تعديل» و«🗑 حذف». تُحفظ تغييراتك في متصفحك دون المساس بالأصل، ويمكنك الرجوع بـ«↺ استعادة الأصل» من قائمة «⋯ المزيد».'},
+{k:['نسخه احتياطيه','احتياطي','استيراد','حفظ','فقدان','نقل','جهاز اخر','ضاعت'],t:'النسخة الاحتياطية والنقل بين الأجهزة',a:'تعديلاتك مخزَّنة في متصفحك فقط. احفظ «💾 نسخة احتياطية» (ملف JSON) دوريًا، ولنقلها إلى جهاز آخر افتح البرنامج هناك واضغط «📂 استيراد». يذكّرك البرنامج بعد كل خمس تعديلات.',click:['#ex','احفظ نسخة الآن']},
+{k:['مفضله','نجمه','اهم','حفظ نص','قائمتي'],t:'المفضلة',a:'اضغط النجمة ☆ على أي نص لإضافته إلى المفضلة، ثم زر «★ المفضلة» لعرضها وحدها.',go:['fav=1','عرض المفضلة']},
+{k:['جدول','اعمده','ترتيب','فرز','تصدير'],t:'عرض الجدول',a:'زر «▦ جدول» يعرض النتائج في جدول؛ اضغط على رأس أي عمود لترتيبه تصاعديًا أو تنازليًا.',go:['v=t&all=1','افتح الجدول']},
+{k:['خط','حجم','كبير','صغير','تباين','قراءه','نظر'],t:'حجم الخط والتباين',a:'«A+» و«A−» من «⋯ المزيد» يكبّران الخط أو يصغّرانه، و«◐ تباين عالٍ» يسهّل القراءة.'},
+{k:['انترنت','بدون انترنت','اوفلاين','تثبيت','هاتف','جوال','تطبيق','موبايل'],t:'العمل دون إنترنت وعلى الهاتف',a:'بعد أول فتح يعمل المرجع دون إنترنت. على الهاتف اختر من قائمة المتصفح «إضافة إلى الشاشة الرئيسية» فيظهر كتطبيق.'},
+{k:['جريده','جريدة','joradp','الجريده الرسميه','عدد الجريده','ملف الجريده'],t:'الوصول إلى الجريدة الرسمية',a:'زر «🔎 الجريدة الرسمية» يساعدك على الوصول إلى عدد الجريدة وصفحة النص، وفي البطاقات رابط للعدد المنشور فيه النص حيثما توفرت بياناته.',click:['#jb','افتح مساعد الجريدة']},
+{k:['تلقائي','آلي','الي','تحتاج مراجعه','ملاحظه','تحديث','احدث','اخر تحديث','متى'],t:'النصوص المضافة آليًا والتحديث',a:'النصوص المضافة من فهرس الجريدة الرسمية (أكتوبر 2026) صُنّفت تلقائيًا، وعليها ملاحظة «تحتاج إلى مراجعة»؛ صحّح قسمها من «✎ تعديل» عند اللزوم. واستُثنيت نصوص تفويض الإمضاء والتعيينات والنصوص المؤقتة. سجل التحديثات في «⋯ المزيد».',click:['#clb','افتح سجل التحديثات']},
+{k:['قانوني','استشاره','حجيه','رسمي','مسؤوليه'],t:'تنبيه',a:'المرجع أداة بحث وتنظيم وليس نشرًا رسميًا. النص المعتمد هو المنشور في الجريدة الرسمية، فراجعه قبل أي إجراء أو استشهاد.'}
+];
+/* ---------- الواجهة ---------- */
+var dlg,body,tabs={},cur='start';
+function chips(){return['كيف أبحث؟','كيف أعرف أن النص ملغى؟','كيف أنسخ الإحالة؟','كيف أطبع تقريرًا؟','كيف أحفظ تعديلاتي؟','ما هي الأقسام؟']}
+function render(){
+var h='<div class="hph"><h3>🤖 مساعد المرجع القانوني</h3><button class="hx" data-hx="close" aria-label="إغلاق">✕</button></div>'+
+'<div class="hpt" role="tablist">'+[['start','ابدأ هنا'],['sections','الأقسام'],['how','أمثلة تطبيقية'],['ask','اسأل المساعد']].map(function(t){return '<button role="tab" data-tab="'+t[0]+'" class="'+(cur==t[0]?'on':'')+'">'+t[1]+'</button>'}).join('')+'</div><div class="hpb">';
+if(cur=='start'){
+var d=data(),s=sections(),c=d.filter(function(x){return x.cancelled}).length;
+h+='<p>المرجع فهرس منظَّم لنصوص قطاع الشباب والرياضة. فيه الآن <b>'+d.length+'</b> نصًّا في <b>'+s.o.length+'</b> أقسام، منها <b>'+c+'</b> نصًّا ملغى.</p>'+
+'<h4>ثلاث خطوات تكفيك</h4><ol class="hpo"><li><b>ابحث</b> في الخانة أعلى الصفحة برقم النص أو بكلمة من موضوعه.</li><li><b>ضيّق</b> النتائج بالقسم أو النوع أو الحالة (ساري / معدَّل / ملغى) أو السنة.</li><li><b>استعمل النص</b>: انسخ إحالته، أو افتح رابطه، أو اطبع تقريرًا.</li></ol>'+
+'<h4>جرّبها الآن</h4><div class="hpc">'+[['13-05','q=13-05'],['الاتحاديات الرياضية','q='+encodeURIComponent('الاتحاديات الرياضية')],['النصوص الملغاة','st='+encodeURIComponent('ملغى')],['قسم التمويل','sec='+encodeURIComponent('التمويل')]].map(function(a){return '<button data-go="'+esc(a[1])+'">'+esc(a[0])+'</button>'}).join('')+'</div>'+
+'<p class="hpm">المرجع أداة بحث وتنظيم وليس نشرًا رسميًا؛ راجع الجريدة الرسمية قبل الاستشهاد.</p>';
+}else if(cur=='sections'){
+var s2=sections();h+='<p>اضغط على أي قسم أو باب لعرض نصوصه.</p>';
+s2.o.forEach(function(sec){var n=0;Object.keys(s2.m[sec]).forEach(function(k){n+=s2.m[sec][k]});
+h+='<details class="hps" open><summary><b>'+esc(sec)+'</b> <span>'+n+' نصًّا</span></summary><p class="hpm">'+esc(DESC[sec]||'')+'</p><div class="hpc"><button data-go="sec='+encodeURIComponent(sec)+'">كل نصوص «'+esc(sec)+'»</button>'+Object.keys(s2.m[sec]).map(function(k){return '<button data-go="sec='+encodeURIComponent(sec)+'&ch='+encodeURIComponent(k)+'">'+esc(k.replace('الإطار المؤسساتي: ',''))+' ('+s2.m[sec][k]+')</button>'}).join('')+'</div></details>'})
+}else if(cur=='how'){
+h+='<p>كل مثال له زر «جرّبه» ينفّذه أمامك.</p>'+examples().map(function(e){return '<div class="hpe"><div><b>'+esc(e[0])+'</b><p>'+esc(e[1])+'</p><p class="hpm">اكتب/اختر: <code>'+esc(e[2])+'</code> ← '+esc(e[4])+'</p></div><button class="on" data-go="'+esc(e[3])+'">جرّبه</button></div>'}).join('')+
+'<div class="hpe"><div><b>اطبع تقريرًا</b><p>من «⋯ المزيد» ← «🖨 طباعة تقرير رسمي» بعد تحديد بحثك.</p></div><button class="on" data-click="#pr">جرّبه</button></div>'+
+'<div class="hpe"><div><b>احفظ نسخة احتياطية</b><p>لتحمي تعديلاتك وتنقلها بين الأجهزة.</p></div><button class="on" data-click="#ex">جرّبه</button></div>';
+}else{
+h+='<form class="hpq" id="hpf"><input id="hpi" type="search" placeholder="اكتب سؤالك: مثل كيف أعرف أن النص ملغى؟ أو رقم نص 14-330" autocomplete="off"><button class="on">اسأل</button></form><div class="hpc">'+chips().map(function(c){return '<button data-q="'+esc(c)+'">'+esc(c)+'</button>'}).join('')+'</div><div id="hpa" aria-live="polite"></div>';
+}
+body.innerHTML=h+'</div>'}
+function ans(q){
+var out=$('#hpa');if(!q.trim())return;var nq=nz(q),sc=KB.map(function(t){var s=0;t.k.forEach(function(k){var kk=nz(k);if(kk.length>1&&nq.indexOf(kk)>-1)s+=kk.length>3?2:1});return[s,t]}).filter(function(x){return x[0]>0}).sort(function(a,b){return b[0]-a[0]}).slice(0,2);
+var h='<div class="hpu">'+esc(q)+'</div>';
+var numq=q.match(/\d{1,4}\s*[-–/]\s*\d{1,4}/);
+var res=search(q);
+if(sc.length){sc.forEach(function(x){var t=x[1];h+='<div class="hpr"><b>'+esc(t.t)+'</b><p>'+esc(t.a)+'</p>'+(t.go?'<button class="on" data-go="'+esc(t.go[0])+'">'+esc(t.go[1])+'</button>':'')+(t.click?'<button class="on" data-click="'+esc(t.click[0])+'">'+esc(t.click[1])+'</button>':'')+(t.tab?'<button class="on" data-tab="'+t.tab+'">افتح التبويب</button>':'')+'</div>'})}
+if(numq||(!sc.length)){
+if(res.length){h+='<div class="hpr"><b>'+(numq?'نتائج الرقم '+esc(numq[0]):'وجدتُ '+res.length+(res.length>=60?'+':'')+' نصًّا في المرجع يخص «'+esc(q)+'»')+'</b>'+res.slice(0,5).map(function(x){return '<div class="hpl"><button class="lk" data-go="all=1&amp;id='+x.id+'">'+esc(x.kind+(x.num?' '+x.num:''))+' — '+esc((x.subj||'').slice(0,90))+'</button></div>'}).join('')+'<button class="on" data-go="q='+encodeURIComponent(q.replace(/[؟?]/g,''))+'">اعرض كل النتائج في القائمة</button></div>'}
+else if(!sc.length){h+='<div class="hpr"><p>لم أجد جوابًا في دليل الاستعمال ولا نصًّا مطابقًا. جرّب كلمة أبسط من موضوع النص، أو اكتب رقمه، أو اختر سؤالًا من الاقتراحات.</p></div>'}}
+out.insertAdjacentHTML('afterbegin',h)}
+function search(q){var ws=nz(q).replace(/[؟?!.,،:]/g,' ').split(/\s+/).filter(function(w){return w.length>2&&['كيف','ماذا','هل','اين','متى','ليس','هذا','عن','من','الى','على'].indexOf(w)<0});if(!ws.length)return[];
+var f=typeof N=='function'?N:nz;ws=ws.map(function(w){return f(w).replace(/^(وال|فال|بال|كال|لل|ال)/,'')}).filter(function(w){return w.length>1});
+return data().filter(function(x){var s=x.q||nz((x.subj||'')+' '+(x.num||'')+' '+(x.desig||''));return ws.every(function(w){return s.indexOf(w)>-1})}).slice(0,60)}
+function init(){
+if(document.getElementById('hp'))return;
+dlg=document.createElement('dialog');dlg.id='hp';dlg.setAttribute('aria-label','مساعد المرجع');body=document.createElement('div');dlg.appendChild(body);document.body.appendChild(dlg);
+var btn=document.getElementById('hlp');if(!btn){btn=document.createElement('button');btn.id='hlp';btn.textContent='🤖 المساعد';btn.title='دليل الاستعمال والمساعد';var ref=document.getElementById('jb');if(ref&&ref.parentNode)ref.parentNode.insertBefore(btn,ref);else document.body.appendChild(btn)}
+btn.onclick=function(){cur='start';render();dlg.showModal()};
+var mp=document.querySelector('.mp');if(mp&&!document.getElementById('hlp2')){var b2=document.createElement('button');b2.id='hlp2';b2.textContent='🤖 دليل الاستعمال';mp.insertBefore(b2,mp.firstChild);b2.onclick=function(){cur='how';render();dlg.showModal()}}
+dlg.addEventListener('click',function(e){var t=e.target.closest?e.target.closest('[data-go],[data-click],[data-tab],[data-q],[data-hx]'):null;
+if(e.target===dlg){dlg.close();return}if(!t)return;
+if(t.dataset.hx){dlg.close();return}
+if(t.dataset.tab){cur=t.dataset.tab;render();return}
+if(t.dataset.q){var i=$('#hpi');i.value=t.dataset.q;ans(t.dataset.q);return}
+if(t.dataset.go!==undefined){dlg.close();go(t.dataset.go);return}
+if(t.dataset.click){dlg.close();var el=document.querySelector(t.dataset.click);if(el){var mn=$('#mn');if(mn&&mn.contains(el))mn.open=true;el.click()}}});
+dlg.addEventListener('submit',function(e){e.preventDefault();var i=$('#hpi');if(i)ans(i.value)});
+document.addEventListener('keydown',function(e){if(e.key=='?'&&!/INPUT|TEXTAREA|SELECT/.test((e.target||{}).tagName||'')){e.preventDefault();$('#hlp').click()}});
+if(!localStorage.getItem('hp_seen')){try{localStorage.setItem('hp_seen','1');btn.classList.add('pulse');setTimeout(function(){btn.classList.remove('pulse')},12000)}catch(e){}}}
+if(document.readyState=='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script></body></html>
