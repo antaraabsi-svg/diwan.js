@@ -211,9 +211,16 @@ html.intro-on body>*:not(#vintro){visibility:hidden}
 .hpq{display:flex;gap:8px}.hpq input{flex:1;padding:8px 12px;border:1px solid var(--bd);border-radius:10px;font:inherit;background:var(--cd);color:var(--ink)}.hpq button{border:0;border-radius:10px;padding:8px 16px;cursor:pointer;font:inherit}
 .hpu{background:var(--g2);border-radius:10px 10px 10px 2px;padding:6px 12px;margin:12px 0 6px;font-weight:700}.hpr{border:1px solid var(--bd);border-radius:10px;padding:8px 12px;margin:6px 0}.hpr p{margin:4px 0}.hpl{margin:2px 0}.hpl .lk{border:0;background:none;color:var(--g);text-align:start;cursor:pointer;padding:2px 0;text-decoration:underline;font:inherit;border-radius:0}
 @media print{#hp,#hlp,#hlp2{display:none!important}}
+#rv[hidden],#rvbar[hidden],#upd[hidden]{display:none!important}
+.rvb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;padding:8px 12px;border:1px dashed var(--au);border-radius:10px;background:#fff6dc66;font-size:.88rem}.rvb select{font:inherit;max-width:100%}
+#rvbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:#fff6dc;border:2px solid var(--au);border-radius:12px;padding:8px 14px;margin-bottom:10px}
+#er{max-width:560px;width:92%;background:var(--cd);color:var(--ink);border:2px solid var(--au);border-radius:14px}#er::backdrop{background:#0008}#er label{display:block;margin:10px 0;font-weight:700}#er select,#er textarea{display:block;width:100%;margin-top:4px;padding:8px;font:inherit;border:1px solid var(--bd);border-radius:8px;background:var(--cd);color:var(--ink)}
+#upd{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;background:var(--g);color:#fff;padding:8px 16px;position:sticky;top:0;z-index:9998}#upd button{font:inherit;border:1px solid #fff8;border-radius:999px;padding:3px 14px;cursor:pointer;background:transparent;color:#fff}#upd button.on{background:var(--au);color:#091811;border-color:var(--au)}
+@media print{.rvb,#rvbar,#upd,#er{display:none!important}}
 </style><script id="enh-js">(function(){
-var VERSION='1.5.0',VDATE='2026-10-11',PAGE=60,BASE_TITLE=document.title;
+var VERSION='1.6.0',VDATE='2026-10-11',PAGE=60,BASE_TITLE=document.title;
 var CHANGES=[
+['1.6.0','2026-10-11',['وضع «للمراجعة»: اعتماد أو نقل تصنيف النصوص المضافة آليا نصًّا نصًّا أو دفعة واحدة','زر «⚑ أبلغ عن خطأ» على كل نص يجهّز بلاغًا جاهزًا للمجموعة','تصدير نتائج البحث إلى Excel وWord (من «⋯ المزيد»)','تنبيه «تتوفر نسخة جديدة» عند نشر تحديث']],
 ['1.5.0','2026-10-11',['إعادة بناء البيانات من صفحات الجريدة الرسمية نفسها: روابط دقيقة بين كل نص وتعديلاته وما ألغاه والنصوص التطبيقية له (779 نصًّا الآن)','رقم الصفحة في الجريدة الرسمية في الإحالة (ص)','تصحيح أرقام الجريدة الرسمية لعدد من النصوص القديمة بحسب الموقع الرسمي']],
 ['1.4.0','2026-10-10',['فيديو افتتاحي عند الدخول يتلاشى تدريجيا لتظهر واجهة البرنامج (مع زر تخطّي، وإعادته من «⋯ المزيد»)','رابط مجموعة «ديوان قطاع الشباب والرياضة» على فيسبوك في الشريط العلوي وأسفل الصفحة']],
 ['1.3.0','2026-10-09',['مساعد وشرح داخلي: زر «🤖 المساعد» (أو مفتاح ؟) فيه تعريف بالبرنامج وأقسامه وأمثلة تطبيقية بزر «جرّبه» وأسئلة وأجوبة']],
@@ -358,6 +365,7 @@ if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.s
 var f=document.querySelector('footer .w');if(f&&!document.getElementById('ver')){var v=document.createElement('p');v.id='ver';v.className='m';v.textContent='الإصدار '+VERSION+' — '+VDATE;f.appendChild(v)}
 }
 if(document.readyState=='loading')document.addEventListener('DOMContentLoaded',init);else init();
+window.REF_VERSION=VERSION;
 if(window.__ENH_TEST)window.__ENH_TEST={parseQ:parseQ,cite:cite,dateOf:dateOf,strip:strip};
 })();
 </script><script id="help-js">(function(){
@@ -385,6 +393,11 @@ var ex=[
 function sections(){var m={},o=[];data().forEach(function(x){if(!m[x.sec]){m[x.sec]={};o.push(x.sec)}m[x.sec][x.ch]=(m[x.sec][x.ch]||0)+1});return{m:m,o:o}}
 var DESC={'الرياضة':'القانون العام للرياضة، الاتحاديات والأندية، التظاهرات، رياضيو النخبة، المؤسسات الرياضية، الطب الرياضي والمنشطات.','الشباب':'الجمعيات الشبانية، تظاهرات الشباب (المهرجانات...)، التنشيط والترفيه ومراكز الشباب.','الإدارة':'تنظيم الإدارة المركزية للوزارة وصلاحيات الوزير.','الهياكل':'المؤسسات والمعاهد والمديريات تحت الوصاية وتصنيف مناصبها العليا.','المنشآت':'إنشاء المنشآت الرياضية والشبانية واستغلالها ودفاتر الشروط.','التمويل':'حسابات التخصيص الخاص والصناديق والإعانات والإشهار الرياضي.','الموارد البشرية':'القوانين الأساسية للأسلاك، التوظيف والمسابقات، التعويضات، الخدمات الاجتماعية.'};
 var KB=[
+{k:['مراجعة','للمراجعة','تصنيف آلي','اعتماد','تصنيف خاطئ','نقل قسم','وضع المراجعة'],t:'وضع المراجعة',a:'النصوص المضافة آليا من فهرس الجريدة الرسمية تصنيفها مقترَح فقط. اضغط «☑ للمراجعة» لتعرض غير المعتمدة، ثم «✓ اعتماد» على البطاقة إن كان تصنيفها صحيحا، أو غيّر القسم والباب من القائمة. وتوجد أزرار لاعتماد الكل دفعة واحدة. اختياراتك تُحفظ في متصفحك.'},
+{k:['ابلاغ','أبلغ','بلاغ','خطأ','خطا في نص','ملاحظة','تصحيح'],t:'الإبلاغ عن خطأ',a:'على كل بطاقة زر «⚑ أبلغ عن خطأ»: اكتب ملاحظتك فيُنسخ بلاغ جاهز يتضمن بيانات النص، ويُفتح رابط المجموعة لتلصقه فيها.'},
+{k:['اكسل','excel','xlsx','وورد','word','docx','تصدير','تحميل النتائج'],t:'تصدير النتائج إلى Excel وWord',a:'«⋯ المزيد» ثم «تصدير Excel» أو «تصدير Word»: يُنشأ ملف يضم النتائج المعروضة حاليا (بعد البحث والتصفية)، مع الرقم والتاريخ والموضوع والجريدة الرسمية والصفحة والحالة.'},
+{k:['صفحة','رقم الصفحة','ص ','جريدة رسمية','ج.ر'],t:'الجريدة الرسمية ورقم الصفحة',a:'تظهر على كل بطاقة بيانات النشر: رقم العدد والسنة ثم الصفحة «ج.ر 13/1963، ص 268»، وتدخل في الإحالة المنسوخة.'},
+{k:['نسخة جديدة','تحديث','اصدار','جديد','تحديث البرنامج'],t:'إشعار النسخة الجديدة',a:'عند نشر نسخة أحدث يظهر شريط «توجد نسخة جديدة» أعلى الصفحة؛ اضغط «تحديث الآن» ليُحمَّل الإصدار الأحدث دون أن تفقد ما أضفته.'},
 {k:['ما هو','عن البرنامج','تعريف','حول','من اين','المصدر','ماذا يفعل','فائده'],t:'ما هو المرجع؟',a:'فهرس منظَّم للقوانين والمراسيم والقرارات الخاصة بقطاع الشباب والرياضة في الجزائر، مأخوذ من فهرس الجريدة الرسمية، يُرتَّب حسب القسم والباب والسنة، ويربط كل نص بتعديلاته والنصوص التطبيقية له.'},
 {k:['قسم','اقسام','باب','ابواب','تصنيف','فرع'],t:'الأقسام والأبواب',a:'سبعة أقسام: الرياضة، الشباب، الإدارة، الهياكل، المنشآت، التمويل، الموارد البشرية. وتحت كل قسم أبواب فرعية. استعمل «الأبواب» على اليمين أو قائمة «كل الأقسام». ملاحظة: قد يظهر النص في أكثر من قسم عندما يهم أكثر من موضوع.',tab:'sections'},
 {k:['بحث','ابحث','اجد','كيف اجد','ابحث عن','دور','طريقه البحث'],t:'كيف أبحث؟',a:'اكتب في خانة البحث أعلى الصفحة: رقم النص (13-05)، أو كلمات من الموضوع، أو السنة، أو رقم الجريدة. تظهر الاقتراحات أثناء الكتابة. للعبارة بالضبط ضعها بين «»، ولاستبعاد كلمة اكتب (-) قبلها. اضغط Esc لمسح البحث.',go:['q=13-05','جرّب: 13-05']},
@@ -462,6 +475,115 @@ if(t.dataset.click){dlg.close();var el=document.querySelector(t.dataset.click);i
 dlg.addEventListener('submit',function(e){e.preventDefault();var i=$('#hpi');if(i)ans(i.value)});
 document.addEventListener('keydown',function(e){if(e.key=='?'&&!/INPUT|TEXTAREA|SELECT/.test((e.target||{}).tagName||'')){e.preventDefault();$('#hlp').click()}});
 if(!localStorage.getItem('hp_seen')){try{localStorage.setItem('hp_seen','1');btn.classList.add('pulse');setTimeout(function(){btn.classList.remove('pulse')},12000)}catch(e){}}}
+if(document.readyState=='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script><script id="pro-js">(function(){
+/* بريد استقبال البلاغات (اختياري): ضع عنوانًا هنا ليظهر زر «إرسال بالبريد» في نافذة البلاغ */
+var REPORT_EMAIL='';
+var FB='https://www.facebook.com/groups/www.diwan.js1236';
+function $(s){return document.querySelector(s)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function ensure(id,tag,html,parent,ref){var e=document.getElementById(id);if(!e){e=document.createElement(tag);e.id=id;if(html!=null)e.innerHTML=html;if(ref&&ref.parentNode===parent)parent.insertBefore(e,ref);else parent.appendChild(e)}return e}
+function flash(el,t){if(!el)return;if(!el.dataset.o)el.dataset.o=el.textContent;el.textContent=t;setTimeout(function(){el.textContent=el.dataset.o;delete el.dataset.o},1500)}
+function copy(s){return(navigator.clipboard&&window.isSecureContext?navigator.clipboard.writeText(s).then(function(){return true},function(){return false}):Promise.resolve(false)).then(function(ok){if(ok)return true;try{var t=document.createElement('textarea');t.value=s;t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.select();var r=document.execCommand('copy');t.remove();return r}catch(e){return false}})}
+function ver(){return window.REF_VERSION||''}
+/* ---------- وضع المراجعة ---------- */
+function REV(){UD.rev=UD.rev||{};return UD.rev}
+function pending(x){return !!x.note&&x.note.indexOf('آليا')>-1&&x.note.indexOf('مراجعة')>-1&&!REV()[x.id]&&!(UD.edit[x.id]&&(UD.edit[x.id].sec||UD.edit[x.id].ch))}
+var taxD=null,tax=[];
+function taxo(){if(taxD===D)return tax;taxD=D;var s={};tax=[];D.forEach(function(x){var k=x.sec+'|'+x.ch;if(!s[k]){s[k]=1;tax.push([x.sec,x.ch])}});tax.sort(function(a,b){return a[0].localeCompare(b[0])||a[1].localeCompare(b[1])});return tax}
+var _list=window.list;
+window.list=function(){var r=_list.apply(this,arguments);if(S.rev)r.r=r.r.filter(pending);return r};
+var _card=window.card;
+window.card=function(x,k){var h=_card(x,k);
+if(x.pg)h=h.replace(/(📰 ج\.ر \d+(?: \/ \d+)?)/,'$1، ص '+x.pg);
+h=h.replace('<span class="sp"></span>','<button class="lk" data-er="'+x.id+'">⚑ أبلغ عن خطأ</button><span class="sp"></span>');
+if(pending(x)){var cur=x.sec+'|'+x.ch;h=h.replace(/<\/article>\s*$/,'<div class="rvb" data-rid="'+x.id+'"><span>⚙ تصنيف تلقائي: <b>'+esc(x.sec)+' › '+esc(x.ch)+'</b></span><button class="on" data-rv="ok">✓ اعتماد</button><select data-rv="mv" aria-label="نقل إلى قسم آخر"><option value="">نقل إلى…</option>'+taxo().filter(function(t){return t[0]+'|'+t[1]!==cur}).map(function(t){return '<option value="'+esc(t[0]+'|'+t[1])+'">'+esc(t[0]+' › '+t[1].replace('الإطار المؤسساتي: ',''))+'</option>'}).join('')+'</select></div></article>')}
+return h};
+function pcount(){return D.filter(pending).length}
+function updRv(){var b=$('#rv');if(!b)return;var n=pcount();b.textContent='☑ للمراجعة ('+n+')';b.classList.toggle('on',!!S.rev);b.hidden=!n&&!S.rev;
+var bar=$('#rvbar');if(bar){bar.hidden=!S.rev;if(S.rev)bar.querySelector('b').textContent=n}}
+var _render=window.render;
+window.render=function(){var r=_render.apply(this,arguments);updRv();return r};
+/* ---------- التصدير ---------- */
+var crcT=null;
+function crc32(u){var t=crcT;if(!t){t=crcT=[];for(var n=0,c;n<256;n++){c=n;for(var k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}}var crc=-1;for(var i=0;i<u.length;i++)crc=t[(crc^u[i])&255]^(crc>>>8);return(crc^-1)>>>0}
+function zip(files){var enc=new TextEncoder(),parts=[],cen=[],off=0,csz=0;
+files.forEach(function(f){var nm=enc.encode(f.n),d=enc.encode(f.d),crc=crc32(d),lh=new DataView(new ArrayBuffer(30));
+lh.setUint32(0,0x04034b50,true);lh.setUint16(4,20,true);lh.setUint16(6,0x0800,true);lh.setUint16(12,0x21,true);lh.setUint32(14,crc,true);lh.setUint32(18,d.length,true);lh.setUint32(22,d.length,true);lh.setUint16(26,nm.length,true);
+parts.push(new Uint8Array(lh.buffer),nm,d);
+var ch=new DataView(new ArrayBuffer(46));ch.setUint32(0,0x02014b50,true);ch.setUint16(4,20,true);ch.setUint16(6,20,true);ch.setUint16(8,0x0800,true);ch.setUint16(14,0x21,true);ch.setUint32(16,crc,true);ch.setUint32(20,d.length,true);ch.setUint32(24,d.length,true);ch.setUint16(28,nm.length,true);ch.setUint32(42,off,true);
+cen.push(new Uint8Array(ch.buffer),nm);csz+=46+nm.length;off+=30+nm.length+d.length});
+var e=new DataView(new ArrayBuffer(22));e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,csz,true);e.setUint32(16,off,true);
+return new Blob(parts.concat(cen,[new Uint8Array(e.buffer)]),{type:'application/zip'})}
+function x(s){return String(s==null?'':s).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g,'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function stat(r,am){return r.cancelled?'ملغى':am[r.id]?'معدَّل':'ساري'}
+function amSet(){var m={};D.forEach(function(r){if(r.amends&&byId[r.amends]&&!r.cancelled)m[r.amends]=1});return m}
+function dateOf(r){var d=r.desig||'',m=d.match(/(?:المؤرخ|مؤرخ|الممضي|ممضي)\s*(?:في)?\s*(.+)$/);return m?m[1].replace(/\s(?:يعدل|يتمم|الذي|المتضمن)\s.*$/,'').trim():''}
+function nowStr(){var d=new Date();return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear()}
+function filt(){var a=[],q=$('#q').value.trim();if(q)a.push('البحث: '+q);[['#sec','القسم'],['#kind','النوع'],['#role','الدور'],['#st2','الحالة']].forEach(function(p){var e=$(p[0]);if(e&&e.value)a.push(p[1]+': '+e.value)});if($('#y1').value||$('#y2').value)a.push('السنة: '+($('#y1').value||'…')+' → '+($('#y2').value||'…'));if(S.ch)a.push('الباب: '+S.ch);if(S.fam)a.push('نص وما يتصل به');if(S.fav)a.push('المفضلة');if(S.rev)a.push('للمراجعة');return a.length?a.join(' | '):'كل النصوص'}
+function rows(){var am=amSet();return list().r.map(function(r,i){var t=r.amends&&byId[r.amends]||r.parent&&byId[r.parent];return{n:i+1,sec:r.sec,ch:r.ch,kind:r.kind,num:r.num||'',date:dateOf(r),subj:r.subj,jo:r.oj?('ج.ر '+r.oj+(r.ojy?'/'+r.ojy:'')+(r.pg?'، ص '+r.pg:'')):'',st:stat(r,am),role:r.role||'',rel:t?(t.kind+(t.num?' '+t.num:'')):'',note:r.note||''}})}
+function dl(blob,name){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1500)}
+function fname(ext){return 'المرجع_القانوني_'+new Date().toISOString().slice(0,10)+'.'+ext}
+function colL(i){return String.fromCharCode(65+i)}
+function exportXlsx(){var R=rows();if(!R.length){alert('لا توجد نتائج لتصديرها');return}
+var H=['م','القسم','الباب','النوع','الرقم','التاريخ','الموضوع','الجريدة الرسمية','الحالة','الدور','يرتبط بـ'],K=['n','sec','ch','kind','num','date','subj','jo','st','role','rel'],W=[6,16,30,18,12,22,70,24,10,10,24];
+function cell(c,r,v,s){return typeof v=='number'?'<c r="'+colL(c)+r+'" s="'+s+'"><v>'+v+'</v></c>':'<c r="'+colL(c)+r+'" s="'+s+'" t="inlineStr"><is><t xml:space="preserve">'+x(v)+'</t></is></c>'}
+var sd='<row r="1" ht="24" customHeight="1">'+H.map(function(h,c){return cell(c,1,h,1)}).join('')+'</row>';
+R.forEach(function(o,i){sd+='<row r="'+(i+2)+'">'+K.map(function(k,c){return cell(c,i+2,o[k],2)}).join('')+'</row>'});
+var sheet='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView rightToLeft="1" workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><sheetFormatPr defaultRowHeight="18"/><cols>'+W.map(function(w,i){return '<col min="'+(i+1)+'" max="'+(i+1)+'" width="'+w+'" customWidth="1"/>'}).join('')+'</cols><sheetData>'+sd+'</sheetData><autoFilter ref="A1:'+colL(H.length-1)+(R.length+1)+'"/><pageSetup orientation="landscape" fitToHeight="0"/></worksheet>';
+var styles='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="2"><font><sz val="11"/><name val="Arial"/></font><font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Arial"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF1A4731"/></patternFill></fill></fills><borders count="2"><border><left/><right/><top/><bottom/><diagonal/></border><border><left style="thin"><color rgb="FFBBBBBB"/></left><right style="thin"><color rgb="FFBBBBBB"/></right><top style="thin"><color rgb="FFBBBBBB"/></top><bottom style="thin"><color rgb="FFBBBBBB"/></bottom><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="3"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="2" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="0" borderId="1" xfId="0" applyBorder="1" applyAlignment="1"><alignment vertical="top" wrapText="1" readingOrder="2"/></xf></cellXfs></styleSheet>';
+var files=[{n:'[Content_Types].xml',d:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>'},
+{n:'_rels/.rels',d:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'},
+{n:'xl/workbook.xml',d:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="النصوص" sheetId="1" r:id="rId1"/></sheets></workbook>'},
+{n:'xl/_rels/workbook.xml.rels',d:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'},
+{n:'xl/styles.xml',d:styles},{n:'xl/worksheets/sheet1.xml',d:sheet}];
+var b=zip(files);b=new Blob([b],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});dl(b,fname('xlsx'))}
+function run(t,o){o=o||{};return '<w:r><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial" w:cs="Arial"/>'+(o.b?'<w:b/><w:bCs/>':'')+(o.c?'<w:color w:val="'+o.c+'"/>':'')+'<w:sz w:val="'+(o.s||20)+'"/><w:szCs w:val="'+(o.s||20)+'"/><w:rtl/></w:rPr><w:t xml:space="preserve">'+x(t)+'</w:t></w:r>'}
+function para(t,o){o=o||{};return '<w:p><w:pPr><w:bidi/>'+(o.j?'<w:jc w:val="'+o.j+'"/>':'')+'<w:spacing w:before="'+(o.sb||0)+'" w:after="'+(o.sa||60)+'"/></w:pPr>'+run(t,o)+'</w:p>'}
+function tc(w,t,o){o=o||{};return '<w:tc><w:tcPr><w:tcW w:w="'+w+'" w:type="dxa"/>'+(o.f?'<w:shd w:val="clear" w:color="auto" w:fill="'+o.f+'"/>':'')+'</w:tcPr>'+para(t,{b:o.b,c:o.c,s:o.s||18,sa:20})+'</w:tc>'}
+function exportDocx(){var R=rows();if(!R.length){alert('لا توجد نتائج لتصديرها');return}
+var W=[600,3700,6300,2000,1100,1700],bd='<w:top w:val="single" w:sz="4" w:color="999999"/><w:left w:val="single" w:sz="4" w:color="999999"/><w:bottom w:val="single" w:sz="4" w:color="999999"/><w:right w:val="single" w:sz="4" w:color="999999"/><w:insideH w:val="single" w:sz="4" w:color="BBBBBB"/><w:insideV w:val="single" w:sz="4" w:color="BBBBBB"/>';
+var hd=['م','النص','الموضوع','الجريدة الرسمية','الحالة','القسم'];
+var tb='<w:tbl><w:tblPr><w:tblW w:w="'+W.reduce(function(a,b){return a+b},0)+'" w:type="dxa"/><w:bidiVisual/><w:tblBorders>'+bd+'</w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="80" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>'+W.map(function(w){return '<w:gridCol w:w="'+w+'"/>'}).join('')+'</w:tblGrid><w:tr><w:trPr><w:tblHeader/></w:trPr>'+hd.map(function(h,i){return tc(W[i],h,{b:1,c:'FFFFFF',f:'1A4731'})}).join('')+'</w:tr>';
+R.forEach(function(o){tb+='<w:tr><w:trPr><w:cantSplit/></w:trPr>'+tc(W[0],String(o.n))+tc(W[1],o.kind+(o.num?' رقم '+o.num:'')+(o.date?' المؤرخ في '+o.date:''),{b:1})+tc(W[2],o.subj)+tc(W[3],o.jo)+tc(W[4],o.st,{b:1,c:o.st=='ملغى'?'B00020':o.st=='معدَّل'?'9A6A00':'1A4731'})+tc(W[5],o.sec)+'</w:tr>'});
+tb+='</w:tbl>';
+var body=para('المرجع القانوني لقطاع الشباب والرياضة',{b:1,s:36,c:'1A4731',j:'center',sa:80})+para('تقرير بنتائج البحث — '+nowStr(),{s:22,j:'center',sa:40})+para('شروط البحث: '+filt()+'   |   عدد النصوص: '+R.length,{s:20,j:'center',sa:200})+tb+para('المرجع أداة بحث وتنظيم وليس نشرًا رسميًا؛ النص المعتمد هو المنشور في الجريدة الرسمية.'+(ver()?' (الإصدار '+ver()+')':''),{s:16,c:'666666',sb:200});
+var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+body+'<w:sectPr><w:pgSz w:w="16838" w:h="11906" w:orient="landscape"/><w:pgMar w:top="900" w:right="720" w:bottom="900" w:left="720" w:header="400" w:footer="400" w:gutter="0"/><w:bidi/></w:sectPr></w:body></w:document>';
+var files=[{n:'[Content_Types].xml',d:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>'},
+{n:'_rels/.rels',d:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>'},
+{n:'word/document.xml',d:doc}];
+dl(new Blob([zip(files)],{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'}),fname('docx'))}
+/* ---------- البلاغ عن خطأ ---------- */
+var erId=0;
+function openEr(id){erId=id;var r=byId[id];if(!r)return;var d=$('#er');
+d.innerHTML='<h3>⚑ الإبلاغ عن خطأ</h3><p class="m">'+esc(r.kind+(r.num?' '+r.num:'')+' — '+(r.subj||'').slice(0,110))+'</p><label>نوع الخطأ<select id="er_t"><option>تصنيف في قسم غير مناسب</option><option>خطأ إملائي أو في العنوان</option><option>رقم النص أو تاريخه أو الجريدة الرسمية</option><option>حالة النص (ملغى / معدَّل) غير صحيحة</option><option>ارتباط خاطئ بنص آخر</option><option>أخرى</option></select></label><label>التفاصيل (ما الصحيح؟)<textarea id="er_d" rows="4"></textarea></label><div class="row"><button class="on" id="er_c">📋 نسخ البلاغ وفتح مجموعة الديوان</button>'+(REPORT_EMAIL?'<button id="er_m">✉ إرسال بالبريد</button>':'')+'<button id="er_x">إغلاق</button></div><p class="m" id="er_s"></p>';
+d.showModal();$('#er_x').onclick=function(){d.close()};
+function msg(){var r=byId[erId];return 'بلاغ عن خطأ في المرجع القانوني\nالنص: '+r.kind+(r.num?' رقم '+r.num:'')+' (المعرّف #'+r.id+')\nالموضوع: '+r.subj+'\nالقسم الحالي: '+r.sec+' › '+r.ch+'\nنوع الخطأ: '+$('#er_t').value+'\nالتفاصيل: '+($('#er_d').value.trim()||'—')+'\nالإصدار: '+ver()+'\nالرابط: '+location.href.split('#')[0]+'#all=1&id='+r.id}
+$('#er_c').onclick=function(){copy(msg()).then(function(ok){$('#er_s').textContent=ok?'تم نسخ البلاغ ✓ الصقه في منشور جديد داخل المجموعة.':'تعذر النسخ تلقائيًا، انسخ النص يدويًا من المربع أعلاه.';window.open(FB,'_blank','noopener')})};
+if(REPORT_EMAIL)$('#er_m').onclick=function(){location.href='mailto:'+REPORT_EMAIL+'?subject='+encodeURIComponent('بلاغ عن خطأ — المرجع القانوني')+'&body='+encodeURIComponent(msg())}}
+/* ---------- تنبيه النسخة الجديدة ---------- */
+var shown=false;
+function showUpd(){if(shown)return;shown=true;var b=ensure('upd','div','<span>🔄 تتوفر نسخة جديدة من المرجع.</span><button class="on" id="upd_go">تحديث الآن</button><button id="upd_x">لاحقًا</button>',document.body,document.body.firstChild);b.hidden=false;
+$('#upd_go').onclick=function(){var p=[];try{p.push(caches.keys().then(function(k){return Promise.all(k.map(function(n){return caches.delete(n)}))}))}catch(e){}try{p.push(navigator.serviceWorker.getRegistrations().then(function(r){return Promise.all(r.map(function(g){return g.unregister()}))}))}catch(e){}Promise.all(p).then(function(){location.reload()},function(){location.reload()})};
+$('#upd_x').onclick=function(){b.hidden=true}}
+function checkVer(){if(!/^https?:$/.test(location.protocol)||!ver())return;fetch('version.json?_='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.version&&j.version!==ver())showUpd()}).catch(function(){})}
+function init(){
+var fr=$('#fr'),mp=document.querySelector('.mp');
+if(fr){var rv=ensure('rv','button','',fr,$('#fv'));rv.hidden=true;rv.title='النصوص المضافة آليا التي لم يُعتمد تصنيفها';rv.onclick=function(){S.home=0;S.rev=S.rev?0:1;window.render()};}
+var host=$('#out');if(host&&host.parentNode){var bar=ensure('rvbar','div','<span>وضع المراجعة: بقي <b>0</b> نصًّا بتصنيف تلقائي لم يُعتمد.</span><button class="on" id="rvall">✓ اعتماد كل المعروض</button><button id="rvend">إنهاء المراجعة</button>',host.parentNode,host);bar.hidden=true;
+$('#rvall').onclick=function(){var a=list().r.filter(pending);if(!a.length)return;if(confirm('اعتماد التصنيف التلقائي لـ '+a.length+' نصًّا؟'))a.forEach(function(r){REV()[r.id]=1});save();window.render()};
+$('#rvend').onclick=function(){S.rev=0;window.render()}}
+if(mp){[['xlsx','📊 تصدير Excel',exportXlsx],['docx','📝 تصدير Word',exportDocx]].forEach(function(a){var b=ensure('ex_'+a[0],'button',a[1],mp,$('#ab'));b.onclick=function(){$('#mn')&&($('#mn').open=false);try{a[2]()}catch(e){alert('تعذر إنشاء الملف: '+e.message)}}})}
+ensure('er','dialog',null,document.body);
+$('#rs')&&$('#rs').addEventListener('click',function(){S.rev=0});
+document.addEventListener('click',function(e){var t=e.target.closest?e.target.closest('[data-er],[data-rv="ok"]'):null;if(!t)return;
+if(t.dataset.er){openEr(+t.dataset.er);return}
+var id=+t.closest('[data-rid]').dataset.rid;REV()[id]=1;save();window.render()});
+document.addEventListener('change',function(e){var t=e.target;if(!t.matches||!t.matches('select[data-rv="mv"]')||!t.value)return;var id=+t.closest('[data-rid]').dataset.rid,p=t.value.split('|');UD.edit[id]=Object.assign({},UD.edit[id],{sec:p[0],ch:p[1]});REV()[id]=1;refresh()});
+if('serviceWorker' in navigator&&navigator.serviceWorker.controller)navigator.serviceWorker.addEventListener('controllerchange',function(){showUpd()});
+setTimeout(checkVer,4000);setInterval(checkVer,30*60*1000);document.addEventListener('visibilitychange',function(){if(!document.hidden)checkVer()});
+updRv()}
 if(document.readyState=='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script><script id="intro-js">(function(){
