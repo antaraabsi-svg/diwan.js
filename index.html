@@ -190,17 +190,19 @@ header,#hm,.bk,.skip,#more{display:none!important}
 .tb th{position:static}
 .lay{display:block!important}
 }
-.vintro{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#f5f4f6;transition:opacity .7s ease;will-change:opacity;visibility:visible}
+.vintro{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,3vh,28px);padding:20px 16px 76px;background:radial-gradient(ellipse at 50% 35%,#256041 0,#1a4731 55%,#0f2c1e 100%);transition:opacity .7s ease;will-change:opacity;visibility:visible;overflow:hidden}
 .vintro.out{opacity:0;pointer-events:none}
-.vintro video{display:block;width:100%;height:100%;object-fit:contain;background:#f5f4f6}
+.vi-card{width:min(86vw,560px,calc((100vh - 270px)*1.7778));aspect-ratio:16/9;border-radius:22px;overflow:hidden;border:3px solid var(--au);box-shadow:0 14px 44px #0006,0 0 0 8px rgba(201,162,39,.14);background:#f4efe3;flex:none}.vintro video{display:block;width:100%;height:100%;object-fit:cover}
+.vi-txt{text-align:center;color:#fff;max-width:640px;animation:viUp .9s .25s both}.vi-txt h1{margin:0 0 8px;font-size:clamp(1.25rem,4.4vw,2rem);font-weight:800;line-height:1.4}.vi-txt h1 b{color:var(--au)}.vi-txt p{margin:0;opacity:.88;font-size:clamp(.88rem,2.6vw,1.05rem);line-height:1.8}.vi-bar{width:min(70vw,280px);height:4px;border-radius:4px;background:rgba(255,255,255,.18);overflow:hidden;animation:viUp .9s .4s both}.vi-bar i{display:block;height:100%;width:0;background:var(--au);animation:viBar 5.2s linear forwards}@keyframes viBar{to{width:100%}}@keyframes viUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.vi-txt,.vi-bar,.vi-bar i{animation:none}.vi-bar i{width:100%}}
 .vi-btn{position:absolute;bottom:max(1rem,env(safe-area-inset-bottom));inset-inline-start:50%;transform:translateX(50%);z-index:2;display:inline-flex;align-items:center;gap:.4rem;border:2px solid var(--au);background:rgba(26,71,49,.92);color:#fff;border-radius:999px;padding:.5rem 1.2rem;font:inherit;font-weight:700;font-size:.95rem;cursor:pointer;box-shadow:0 4px 14px #0003}.vi-btn:hover{background:var(--g)}.vi-btn[hidden]{display:none}
 #vsnd{bottom:calc(max(1rem,env(safe-area-inset-bottom)) + 3.2rem)}
-html.intro-on,html.intro-on body{overflow:hidden;background:#f5f4f6}
+html.intro-on,html.intro-on body{overflow:hidden;background:#1a4731}
 html.intro-on body>*:not(#vintro){visibility:hidden}
 .fbbtn{display:inline-flex;align-items:center;gap:.5rem;background:var(--g);color:#fff!important;text-decoration:none;font-weight:700;border-radius:999px;padding:.4rem 1rem;font-size:.85rem;line-height:1.5;border:1px solid var(--g);transition:background .15s}.fbbtn:hover{background:#12341f}.fbbtn.sm{font-size:.82rem;padding:.3rem .8rem}.fbbtn svg{flex:none}
 @media (max-width:700px){#fbh span{display:none}#fbh{padding:.45rem .6rem}}
 @media print{.vintro,.fbbtn{display:none!important}}
-#hlp{font-weight:700}#hlp.pulse{animation:hpp 1.4s ease-in-out 6}@keyframes hpp{50%{box-shadow:0 0 0 6px #c9a22766}}
+
+header{position:relative}.fbtop{position:absolute;inset-inline-end:auto;left:max(16px,calc((100vw - 1100px)/2));top:50%;transform:translateY(-50%);background:#fff;color:#1a4731!important;border:2px solid var(--au);padding:.5rem 1.1rem;font-size:.9rem}.fbtop:hover{background:var(--au);color:#091811!important}@media (max-width:760px){.fbtop{top:10px;left:10px;transform:none;padding:.35rem .5rem}.fbtop span{display:none}}#hlp{font-weight:700}#hlp.pulse{animation:hpp 1.4s ease-in-out 6}@keyframes hpp{50%{box-shadow:0 0 0 6px #c9a22766}}
 #hp{max-width:720px;width:94%;max-height:88vh;padding:0;background:var(--cd);color:var(--ink);border:2px solid var(--au);border-radius:14px;overflow:hidden}#hp[open]{display:flex;flex-direction:column}#hp::backdrop{background:#0008}
 .hph{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--g);color:#fff}.hph h3{margin:0;font-size:1.05rem}.hx{background:none;border:0;color:#fff;font-size:1.2rem;cursor:pointer}
 .hpt{display:flex;gap:4px;padding:8px 12px 0;border-bottom:1px solid var(--bd);overflow-x:auto}.hpt button{border:0;background:none;padding:8px 12px;cursor:pointer;font:inherit;color:var(--ink);border-bottom:3px solid transparent;white-space:nowrap}.hpt button.on{border-color:var(--au);font-weight:700;color:var(--g)}
@@ -221,8 +223,9 @@ html.intro-on body>*:not(#vintro){visibility:hidden}
 .b.st-un{background:#eef1f4;color:#44515c}.b.st-old{background:#fff3cd;color:#7a5200}.b.st-im{background:#f8d7da;color:#842029}
 :root[data-theme=dark] .b.st-un{background:#2a323a;color:#c9d3db}
 </style><script id="enh-js">(function(){
-var VERSION='1.7.0',VDATE='2026-10-11',PAGE=60,BASE_TITLE=document.title;
+var VERSION='1.7.1',VDATE='2026-10-11',PAGE=60,BASE_TITLE=document.title;
 var CHANGES=[
+['1.7.1','2026-10-11',['رابط مجموعة «ديوان قطاع الشباب والرياضة» في ترويسة الصفحة','شاشة الفيديو الافتتاحي بخلفية خضراء منسجمة مع البرنامج، مع عنوان البرنامج ووصفه وشريط تقدّم']],
 ['1.7.0','2026-10-11',['حالة النص صارت أوضح: «ساري (لا إلغاء مسجّل)» بدل «ساري» المطلقة، مع تنبيه على النصوص القديمة','أزرار «✓ مؤكد ساري» و«⊘ ملغى ضمنيا» لتسجيل ما تعرفه أنت (نص لم يُنشر إلغاؤه لكنه انتهى فعليا)','حالة جديدة «ملغى ضمنيا» وتصفية بها وفي التصدير']],
 ['1.6.2','2026-10-11',['حذف الروابط القديمة إلى موقع mjs.gov.dz بعد إلغاء الموقع']],
 ['1.6.1','2026-10-11',['إضافة رابط بديل «أرشيف السنة» إن تعذّر فتح الرابط المباشر']],
@@ -614,7 +617,7 @@ function btn(id,on){var b=document.getElementById(id);if(b)b.hidden=!on}
 function build(){
 vi=document.getElementById('vintro');if(vi)vi.remove();
 vi=document.createElement('div');vi.id='vintro';vi.className='vintro';vi.setAttribute('role','dialog');vi.setAttribute('aria-modal','true');vi.setAttribute('aria-label','فيديو افتتاحي');
-vi.innerHTML='<video id="vvid" playsinline webkit-playsinline preload="auto"></video><button class="vi-btn" id="vsnd" type="button" hidden>🔊 تشغيل الصوت</button><button class="vi-btn" id="vskip" type="button">تخطّي المقدمة ‹</button>';
+vi.innerHTML='<div class="vi-card"><video id="vvid" playsinline webkit-playsinline preload="auto"></video></div><div class="vi-txt"><h1>المرجع القانوني <b>لقطاع الشباب والرياضة</b></h1><p>فهرس منظَّم للقوانين والمراسيم والقرارات والنصوص التطبيقية، مع تعديلاتها وما ألغاها، ومرتبط بالجريدة الرسمية</p></div><div class="vi-bar"><i></i></div><button class="vi-btn" id="vsnd" type="button" hidden>🔊 تشغيل الصوت</button><button class="vi-btn" id="vskip" type="button">تخطّي المقدمة ‹</button>';
 document.body.appendChild(vi);vv=document.getElementById('vvid');
 document.getElementById('vskip').onclick=end;
 document.getElementById('vsnd').onclick=function(){vv.muted=false;btn('vsnd',false)};
@@ -640,7 +643,7 @@ if(m&&!document.getElementById('intro-replay')){var b=document.createElement('bu
 var svg='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.3-1.6 1.7-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4v3.3h2.8V22h3.3z"/></svg>';
 function mk(id,txt,cls){var a=document.getElementById(id);if(!a){a=document.createElement('a');a.id=id}a.className='fbbtn '+cls;a.href=FB;a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label','مجموعة ديوان قطاع الشباب والرياضة على فيسبوك');a.innerHTML=svg+'<span>'+txt+'</span>';return a}
 var jb=document.getElementById('jb');
-if(jb&&jb.parentNode&&!document.getElementById('fbh'))jb.parentNode.insertBefore(mk('fbh','مجموعة الديوان','sm'),jb);
+var hdr=document.querySelector('header');if(hdr&&!document.getElementById('fbt'))hdr.appendChild(mk('fbt','مجموعة ديوان قطاع الشباب والرياضة','fbtop'));
 var ft=document.querySelector('footer .w');
 if(ft&&!document.getElementById('fbf')){var w=document.createElement('div');w.style.cssText='margin:10px 0';w.appendChild(mk('fbf','مجموعة الديوان على فيسبوك','sm'));ft.appendChild(w)}
 if(H.classList.contains('intro-on'))play();
