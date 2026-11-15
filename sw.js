@@ -1,4 +1,4 @@
-const V='ref-2.7.1';
+const V='ref-3.0.0';
 const FILES=['./','./index.html','./manifest.webmanifest','./icon.webp'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(FILES.map(f=>c.add(f).catch(()=>{})))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
